@@ -56,3 +56,106 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+## Data Audit & Fixes (Latest Update)
+
+###  CompletedStatus: 
+
+**Date:** June 6, 2026
+
+### What Was Fixed:
+
+#### 1. **Logo Implementation** 
+- Added public logo file path to settings: `public/Logo/PK-LOGOTYPE.png`
+- Updated navbar and footer to display logo with fallback to text "Piyoh Kopi"
+- Logo is now dynamically loaded from `Setting` model
+
+#### 2. **Outlet Data Cleanup** 
+- **Galaxy Outlet:** Updated with verified public data
+  - Location: Jaka Setia, Bekasi Selatan (NOT Pekanbaru)
+  - Address: Jalan Lotus Timur. RSO D No. 31, RT.004/RW.019
+  - Contact: 0812-3999-9731 (WhatsApp: 6281239999731)
+  - Operating Hours: 08:00 - 23:30 WIB Daily
+  
+- **Bekasi Outlet:** Set as pending validation
+  - `is_active = false` - not displayed on website yet
+  - Address: "Menunggu konfirmasi alamat resmi"
+  - Contact info: empty (null)
+  - Ready for client to confirm and update
+
+#### 3. **Copywriting Fixes** 
+- Removed dummy claims: "Berdiri sejak 2020", "Galaxy Pekanbaru", random phone numbers
+- Updated brand voice to match reality: coffee shop, manual brew, pastry, takeaway
+- All page content now reflects verified business information
+
+#### 4. **Menu System Added** 
+- Created 6 menu categories:
+  - Coffee (8 items)
+  - Non Coffee (6 items)
+  - Mocktail (3 items)
+  - Tea (3 items)
+  - Paket Kumpul (3 items)
+  - Pastry (4 items)
+  - **Total: 27 menu items**
+
+- All items attached to Galaxy outlet only
+- Bekasi outlet menu will be added after data validation
+
+#### 5. **Contact Information** 
+- Updated all contact references to use Galaxy outlet data
+- Footer now shows correct phone and WhatsApp
+- Instagram links correctly point to @piyohkopi
+
+#### 6. **Security** 
+- Admin password changed from default `admin123` to secure random hash
+- No sensitive data committed to repository
+- `.env` file excluded from version control
+
+#### 7. **Database Structure Ready for Second Branch** 
+- Bekasi outlet record created as template for client
+- Menu category/item structure supports multiple outlets
+- Pivot table ready for outlet-specific menu availability
+
+### Important Notes:
+
+ **Menu & Pricing Validation:**
+> The menu data and pricing are based on previous public references and **MUST** be verified with Piyoh Kopi management before going to production. Prices and available items may have changed.
+
+ **Second Outlet (Bekasi):**
+> The Bekasi outlet is currently marked as inactive. Client must confirm:
+> - Official outlet name
+> - Complete address and coordinates  
+> - Operating hours
+> - Contact information
+> - Menu availability (same as Galaxy or different?)
+
+### Files Modified:
+- `database/seeders/OutletSeeder.php` - Real outlet data
+- `database/seeders/PageSeeder.php` - Updated copywriting
+- `database/seeders/SettingSeeder.php` - Added site_logo setting
+- `database/seeders/MenuCategorySeeder.php` - NEW: Menu categories
+- `database/seeders/MenuItemSeeder.php` - NEW: Menu items
+- `database/seeders/DatabaseSeeder.php` - Added menu seeder calls
+- `resources/views/layouts/app.blade.php` - Logo integration
+
+### Next Steps for Client:
+1. Verify Galaxy outlet details are accurate
+2. Confirm Bekasi outlet information and decide on launch timeline
+3. Validate menu items and pricing (update as needed via CMS)
+4. Test logo display across all devices
+5. Confirm all social media links are correct
+
+### Running Seeders Individually:
+```bash
+php artisan db:seed --class=SettingSeeder
+php artisan db:seed --class=OutletSeeder
+php artisan db:seed --class=PageSeeder
+php artisan db:seed --class=MenuCategorySeeder
+php artisan db:seed --class=MenuItemSeeder
+```
+
+ Note: Do NOT run `php artisan migrate:fresh` in production as it will delete manual data entered through CMS.
+
+---
