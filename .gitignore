@@ -1,0 +1,6 @@
+.DS_Store
+*.key
+*.pub
+node_modules/
+dist/
+.env
