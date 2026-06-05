@@ -18,38 +18,38 @@ class PageSeeder extends Seeder
                 'sections' => [
                     ['key' => 'hero_title', 'type' => 'text', 'value' => 'Setiap Tegukan Punya Cerita', 'sort_order' => 1],
                     ['key' => 'hero_subtitle', 'type' => 'text', 'value' => 'Piyoh Kopi menyajikan kopi pilihan berkualitas tinggi langsung ke meja Anda.', 'sort_order' => 2],
-                    ['key' => 'about_preview', 'type' => 'text', 'value' => 'Berdiri sejak tahun 2020, Piyoh Kopi berkomitmen memperkenalkan kopi racikan modern dengan sentuhan tradisional lokal yang dicintai semua kalangan.', 'sort_order' => 3],
+                    ['key' => 'about_preview', 'type' => 'text', 'value' => 'Piyoh Kopi adalah coffee shop yang menghadirkan racikan kopi modern dengan sentuhan tradisional lokal. Kami berkomitmen memberikan pengalaman terbaik melalui kualitas kopi premium, suasana hangat, dan layanan ramah untuk semua kalangan.', 'sort_order' => 3],
                 ]
             ],
             [
                 'title' => 'About Us',
                 'slug' => 'about',
-                'meta_title' => 'Tentang Kami - Perjalanan Piyoh Kopi',
+                'meta_title' => 'Tentang Kami - Piyoh Kopi',
                 'meta_description' => 'Pelajari sejarah kami, nilai-nilai utama, dan misi kami dalam menyajikan kopi terbaik untuk Anda.',
                 'sections' => [
-                    ['key' => 'history', 'type' => 'text', 'value' => 'Piyoh Kopi bermula dari sebuah kedai kecil berbekal mimpi menyajikan kopi nusantara terbaik dengan harga yang bersahabat.', 'sort_order' => 1],
-                    ['key' => 'vision', 'type' => 'text', 'value' => 'Menjadi jaringan gerai kopi pilihan utama masyarakat Indonesia yang mengedepankan kualitas, keramahan, dan inovasi rasa.', 'sort_order' => 2],
-                    ['key' => 'mission', 'type' => 'text', 'value' => '1. Menyajikan produk kopi & non-kopi berkualitas konsisten.\n2. Memberikan pelayanan yang ramah dan bersahabat.\n3. Membangun ruang komunitas yang nyaman.', 'sort_order' => 3],
+                    ['key' => 'history', 'type' => 'text', 'value' => 'Piyoh Kopi bermula dari sebuah kedai kecil dengan visi menyajikan kopi nusantara berkualitas tinggi dengan harga yang bersahabat. Kami percaya bahwa setiap cangkir kopi memiliki cerita dan keunikan tersendiri yang perlu diapresiasi.', 'sort_order' => 1],
+                    ['key' => 'vision', 'type' => 'text', 'value' => 'Menjadi coffee shop pilihan utama yang dikenal karena kualitas kopi premium, suasana nyaman, dan pelayanan yang hangat dan bersahabat.', 'sort_order' => 2],
+                    ['key' => 'mission', 'type' => 'text', 'value' => '1. Menyajikan produk kopi & non-kopi berkualitas konsisten dengan harga terjangkau.\n2. Memberikan pelayanan yang ramah dan profesional.\n3. Membangun ruang komunitas yang nyaman untuk berkumpul, bekerja, atau belajar.\n4. Menciptakan pengalaman yang berkesan bagi setiap pelanggan.', 'sort_order' => 3],
                 ]
             ],
             [
                 'title' => 'Outlets',
                 'slug' => 'outlet',
                 'meta_title' => 'Lokasi Outlet Piyoh Kopi',
-                'meta_description' => 'Temukan outlet Piyoh Kopi terdekat di kota Anda. Cek jam operasional dan petunjuk arah di sini.',
+                'meta_description' => 'Temukan outlet Piyoh Kopi terdekat di Bekasi. Cek jam operasional dan petunjuk arah di sini.',
                 'sections' => [
                     ['key' => 'page_title', 'type' => 'text', 'value' => 'Kunjungi Outlet Kami', 'sort_order' => 1],
-                    ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Nikmati kopi hangat dan suasana yang asyik bersama teman atau keluarga di outlet-outlet kami.', 'sort_order' => 2],
+                    ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Nikmati kopi hangat dan suasana yang asyik bersama teman atau keluarga di outlet kami yang nyaman.', 'sort_order' => 2],
                 ]
             ],
             [
                 'title' => 'Our Menu',
                 'slug' => 'menu',
                 'meta_title' => 'Menu Favorit Piyoh Kopi',
-                'meta_description' => 'Lihat daftar lengkap menu kopi, non-kopi, makanan ringan, dan hidangan utama andalan Piyoh Kopi.',
+                'meta_description' => 'Lihat daftar lengkap menu kopi, non-kopi, dan makanan ringan pilihan di Piyoh Kopi.',
                 'sections' => [
                     ['key' => 'page_title', 'type' => 'text', 'value' => 'Eksplorasi Rasa Unik Kami', 'sort_order' => 1],
-                    ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Dari Signature Coffee hingga hidangan lezat peneman bersantai Anda.', 'sort_order' => 2],
+                    ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Dari signature coffee hingga minuman non-kopi dan pastry lezat. Ketersediaan dapat berbeda di setiap outlet.', 'sort_order' => 2],
                 ]
             ],
             [
@@ -59,7 +59,7 @@ class PageSeeder extends Seeder
                 'meta_description' => 'Bergabunglah bersama tim dinamis kami. Temukan berbagai lowongan karir menarik di Piyoh Kopi.',
                 'sections' => [
                     ['key' => 'page_title', 'type' => 'text', 'value' => 'Tumbuh Bersama Piyoh Kopi', 'sort_order' => 1],
-                    ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Kami selalu mencari talenta berbakat yang memiliki passion tinggi untuk menyajikan kebahagiaan lewat segelas kopi.', 'sort_order' => 2],
+                    ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Kami selalu mencari talenta berbakat yang memiliki passion tinggi dalam memberikan yang terbaik kepada pelanggan kami.', 'sort_order' => 2],
                 ]
             ],
             [

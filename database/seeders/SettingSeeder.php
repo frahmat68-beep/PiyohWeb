@@ -25,6 +25,13 @@ class SettingSeeder extends Seeder
                 'label' => 'Tagline Website',
             ],
             [
+                'key' => 'site_logo',
+                'value' => 'Logo/PK-LOGOTYPE.png',
+                'group' => 'general',
+                'type' => 'image',
+                'label' => 'Logo Website',
+            ],
+            [
                 'key' => 'contact_email',
                 'value' => 'info@piyohkopi.com',
                 'group' => 'contact',
@@ -33,7 +40,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'contact_phone',
-                'value' => '081234567890',
+                'value' => '0812-3999-9731',
                 'group' => 'contact',
                 'type' => 'text',
                 'label' => 'Telepon Kontak Utama',
@@ -54,7 +61,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'meta_description',
-                'value' => 'Temukan cita rasa kopi terbaik nusantara yang dikemas modern hanya di Piyoh Kopi.',
+                'value' => 'Temukan cita rasa kopi terbaik nusantara yang dikemas modern hanya di Piyoh Kopi. Kopi premium, manual brew, dan suasana nyaman untuk berkumpul.',
                 'group' => 'seo',
                 'type' => 'textarea',
                 'label' => 'Default Meta Description',

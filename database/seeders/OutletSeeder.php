@@ -9,38 +9,36 @@ class OutletSeeder extends Seeder
 {
     public function run(): void
     {
+        // Galaxy - Valid public data
         Outlet::updateOrCreate(
             ['slug' => 'galaxy'],
             [
                 'name' => 'Piyoh Kopi Galaxy',
-                'description' => 'Outlet pertama kami yang menyajikan kopi khas dengan suasana nyaman di kawasan Galaxy Pekanbaru.',
-                'address' => 'Jl. Galaxy No. 12, Senapelan',
-                'city' => 'Pekanbaru',
-                'phone' => '081234567890',
-                'whatsapp' => '6281234567890',
-                'email' => 'galaxy@piyohkopi.com',
-                'google_maps_url' => 'https://maps.google.com',
-                'instagram_url' => 'https://instagram.com/piyohkopi.galaxy',
-                'opening_hours' => 'Setiap Hari: 08:00 - 23:00 WIB',
+                'description' => 'Piyoh Kopi Galaxy adalah coffee shop di area Jaka Setia, Bekasi Selatan, dengan suasana nyaman untuk menikmati kopi, manual brew, pastry, takeaway, dan berkumpul.',
+                'address' => 'Jalan Lotus Timur. RSO D No. 31, RT.004/RW.019, Jaka Setia, Bekasi Selatan, Bekasi, West Java 17147, Indonesia',
+                'city' => 'Bekasi',
+                'phone' => '0812-3999-9731',
+                'whatsapp' => '6281239999731',
+                'instagram_url' => 'https://instagram.com/piyohkopi',
+                'opening_hours' => 'Setiap Hari: 08:00 - 23:30 WIB',
                 'is_active' => true,
                 'sort_order' => 1,
             ]
         );
 
+        // Bekasi - Pending validation (no address/contact yet)
         Outlet::updateOrCreate(
             ['slug' => 'bekasi'],
             [
                 'name' => 'Piyoh Kopi Bekasi',
-                'description' => 'Outlet cabang Bekasi dengan ruang outdoor yang luas cocok untuk nongkrong dan nugas.',
-                'address' => 'Jl. Boulevard Raya Blok AA, Bekasi Barat',
+                'description' => 'Data outlet sedang menunggu konfirmasi resmi dari pihak Piyoh Kopi.',
+                'address' => 'Menunggu konfirmasi alamat resmi',
                 'city' => 'Bekasi',
-                'phone' => '081298765432',
-                'whatsapp' => '6281298765432',
-                'email' => 'bekasi@piyohkopi.com',
-                'google_maps_url' => 'https://maps.google.com',
-                'instagram_url' => 'https://instagram.com/piyohkopi.bekasi',
-                'opening_hours' => 'Setiap Hari: 09:00 - 24:00 WIB',
-                'is_active' => true,
+                'phone' => null,
+                'whatsapp' => null,
+                'instagram_url' => 'https://instagram.com/piyohkopi',
+                'opening_hours' => 'Menunggu konfirmasi',
+                'is_active' => false,
                 'sort_order' => 2,
             ]
         );

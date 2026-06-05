@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Piyoh Kopi - Cita Rasa Kopi Nusantara Terkini')</title>
-    <meta name="description" content="@yield('meta_description', 'Nikmati cita rasa kopi premium racikan nusantara terbaik hanya di Piyoh Kopi.')">
+    <meta name="description" content="@yield('meta_description', 'Temukan cita rasa kopi terbaik nusantara yang dikemas modern hanya di Piyoh Kopi.')">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,8 +31,15 @@
             <div class="flex justify-between h-20 items-center">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}" class="text-2xl font-extrabold text-amber-900 tracking-tight flex items-center gap-2">
-                        <span class="bg-amber-800 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-md shadow-amber-900/10">P</span>
-                        <span>Piyoh<span class="text-amber-600 font-light">Kopi</span></span>
+                        @php
+                            $siteLogo = \App\Models\Setting::where('key', 'site_logo')->value('value');
+                        @endphp
+                        @if($siteLogo && file_exists(public_path($siteLogo)))
+                            <img src="{{ asset($siteLogo) }}" alt="Piyoh Kopi Logo" class="h-12 w-auto">
+                        @else
+                            <span class="bg-amber-800 text-white w-10 h-10 rounded-xl flex items-center justify-center shadow-md shadow-amber-900/10">P</span>
+                            <span>Piyoh<span class="text-amber-600 font-light">Kopi</span></span>
+                        @endif
                     </a>
                 </div>
 
@@ -92,16 +99,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
                 <a href="{{ route('home') }}" class="text-2xl font-extrabold text-white tracking-tight flex items-center gap-2 mb-6">
-                    <span class="bg-amber-800 text-white w-10 h-10 rounded-xl flex items-center justify-center">P</span>
-                    <span>Piyoh<span class="text-amber-500 font-light">Kopi</span></span>
+                    @if($siteLogo && file_exists(public_path($siteLogo)))
+                        <img src="{{ asset($siteLogo) }}" alt="Piyoh Kopi Logo" class="h-10 w-auto">
+                    @else
+                        <span class="bg-amber-800 text-white w-10 h-10 rounded-xl flex items-center justify-center">P</span>
+                        <span>Piyoh<span class="text-amber-500 font-light">Kopi</span></span>
+                    @endif
                 </a>
                 <p class="text-stone-400 text-sm leading-relaxed mb-6">
-                    Menyajikan racikan kopi nusantara autentik dengan nuansa kekinian dan ramah pelanggan. Tempat terbaik untuk menikmati seduhan berkualitas tinggi.
+                    Menyajikan racikan kopi nusantara autentik dengan nuansa kekinian. Tempat terbaik untuk menikmati seduhan berkualitas tinggi dengan suasana nyaman.
                 </p>
                 <div class="flex space-x-4">
-                    <a href="#" class="w-9 h-9 rounded-full bg-stone-800 flex items-center justify-center text-white hover:bg-amber-700 transition-colors duration-200">IG</a>
+                    <a href="https://instagram.com/piyohkopi" target="_blank" class="w-9 h-9 rounded-full bg-stone-800 flex items-center justify-center text-white hover:bg-amber-700 transition-colors duration-200">IG</a>
                     <a href="#" class="w-9 h-9 rounded-full bg-stone-800 flex items-center justify-center text-white hover:bg-amber-700 transition-colors duration-200">FB</a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-stone-800 flex items-center justify-center text-white hover:bg-amber-700 transition-colors duration-200">WA</a>
+                    <a href="https://wa.me/6281239999731" target="_blank" class="w-9 h-9 rounded-full bg-stone-800 flex items-center justify-center text-white hover:bg-amber-700 transition-colors duration-200">WA</a>
                 </div>
             </div>
             <div>
@@ -116,20 +127,20 @@
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-bold text-base mb-6 tracking-wide uppercase">Cabang Outlet</h4>
+                <h4 class="text-white font-bold text-base mb-6 tracking-wide uppercase">Outlet Kami</h4>
                 <ul class="space-y-3.5 text-sm">
-                    <li><a href="{{ route('outlet.show', 'galaxy') }}" class="hover:text-amber-400 transition-colors">Piyoh Galaxy (Pekanbaru)</a></li>
-                    <li><a href="{{ route('outlet.show', 'bekasi') }}" class="hover:text-amber-400 transition-colors">Piyoh Bekasi Barat</a></li>
+                    <li><a href="{{ route('outlet.show', 'galaxy') }}" class="hover:text-amber-400 transition-colors">Piyoh Kopi Galaxy (Bekasi)</a></li>
+                    <li><a href="{{ route('outlet.show', 'bekasi') }}" class="hover:text-amber-400 transition-colors">Piyoh Kopi Bekasi (Segera Hadir)</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-white font-bold text-base mb-6 tracking-wide uppercase">Kontak Hubung</h4>
                 <p class="text-stone-400 text-sm leading-relaxed mb-4">
-                    Punya masukan atau ingin bermitra dengan Piyoh Kopi? Hubungi tim support kami.
+                    Punya masukan atau ingin bermitra dengan Piyoh Kopi? Hubungi tim kami.
                 </p>
                 <div class="text-sm space-y-2.5">
-                    <p><span class="text-white font-medium">Email:</span> info@piyohkopi.com</p>
-                    <p><span class="text-white font-medium">Telepon:</span> +62 812-3456-7890</p>
+                    <p><span class="text-white font-medium">Telepon:</span> 0812-3999-9731</p>
+                    <p><span class="text-white font-medium">WhatsApp:</span> +62 812-3999-9731</p>
                 </div>
             </div>
         </div>
