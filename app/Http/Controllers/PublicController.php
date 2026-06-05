@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Career;
 use App\Models\ContactMessage;
 use App\Models\JobApplication;
@@ -26,6 +27,7 @@ class PublicController extends Controller
         $data = $this->getPageData('home');
         $data['featuredMenuItems'] = MenuItem::with('category')->where('is_featured', true)->where('is_active', true)->take(4)->get();
         $data['outlets'] = Outlet::where('is_active', true)->orderBy('sort_order')->take(3)->get();
+        $data['heroBanner'] = Banner::where('is_active', true)->where('location', 'home')->orderBy('sort_order')->first();
         return view('home', $data);
     }
 
@@ -60,7 +62,6 @@ class PublicController extends Controller
         $data['menuCategories'] = MenuCategory::with(['menuItems' => function ($q) {
             $q->where('is_active', true);
         }])->where('is_active', true)->orderBy('sort_order')->get();
-        
         return view('menu', $data);
     }
 
@@ -98,7 +99,7 @@ class PublicController extends Controller
             'email' => 'required|email|max:255',
             'phone' => 'nullable|string|max:50',
             'cover_letter' => 'nullable|string',
-            'resume' => 'required|file|mimes:pdf,doc,docx|max:5120', // Max 5MB
+            'resume' => 'required|file|mimes:pdf,doc,docx|max:5120',
         ]);
 
         $application = JobApplication::create([

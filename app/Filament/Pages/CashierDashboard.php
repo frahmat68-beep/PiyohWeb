@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Filament\Pages;
+
+use BackedEnum;
+use Filament\Pages\Page;
+
+class CashierDashboard extends Page
+{
+    protected string $view = "filament.pages.cashier-dashboard";
+    protected static string|BackedEnum|null $navigationIcon = "heroicon-o-scale";
+    protected static ?string $navigationLabel = "Dashboard";
+    protected static ?string $title = "Kasir Dashboard";
+
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->hasRole("cashier") ?? false;
+    }
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()?->hasRole("cashier") ?? false;
+    }
+}

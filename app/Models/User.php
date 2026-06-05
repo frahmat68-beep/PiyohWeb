@@ -19,11 +19,6 @@ class User extends Authenticatable implements FilamentUser
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, HasRoles;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
     protected function casts(): array
     {
         return [
@@ -32,11 +27,8 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
-    /**
-     * Determine if the user can access the Filament admin panel.
-     */
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasRole('super_admin') || $this->hasRole('admin');
+        return $this->hasAnyRole(['super_admin', 'admin', 'cashier']);
     }
 }

@@ -16,10 +16,10 @@ class UsersTable
     public static function configure(Table $table): Table
     {
         return $table->columns([
-            TextColumn::make(name)->searchable(),
-            TextColumn::make(email)->searchable(),
-            TextColumn::make(roles.name)->label(Roles)->badge(),
-            TextColumn::make(email_verified_at)->dateTime()->sortable(),
+            TextColumn::make('name')->searchable()->sortable(),
+            TextColumn::make('email')->searchable()->sortable(),
+            TextColumn::make('roles.name')->label('Roles')->badge(),
+            TextColumn::make('created_at')->dateTime()->sortable(),
         ])->filters([
             TrashedFilter::make(),
         ])->recordActions([

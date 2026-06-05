@@ -12,21 +12,25 @@
 <div class="bg-white py-20">
     <div class="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         @foreach($outlets as $outlet)
-            <div class="rounded-3xl border border-amber-100 bg-amber-50/20 p-8 shadow-sm">
-                <div class="mb-4 flex items-center justify-between gap-4">
-                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-amber-900">{{ $outlet->city }}</span>
-                    <span class="text-xs font-semibold {{ $outlet->is_active ? 'text-emerald-600' : 'text-stone-500' }}">{{ $outlet->is_active ? 'Buka' : 'Nonaktif' }}</span>
+            @php $photo = $outlet->getFirstMediaUrl('photo'); @endphp
+            <div class="overflow-hidden rounded-3xl border border-amber-100 bg-amber-50/20 p-0 shadow-sm">
+                <div class="h-52 bg-gradient-to-br from-amber-100 to-stone-200">@if($photo)<img src="{{ $photo }}" alt="{{ $outlet->name }}" class="h-full w-full object-cover">@endif</div>
+                <div class="p-8">
+                    <div class="mb-4 flex items-center justify-between gap-4">
+                        <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-amber-900">{{ $outlet->city }}</span>
+                        <span class="text-xs font-semibold {{ $outlet->is_active ? 'text-emerald-600' : 'text-stone-500' }}">{{ $outlet->is_active ? 'Buka' : 'Nonaktif' }}</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-stone-900">{{ $outlet->name }}</h2>
+                    <p class="mt-3 text-sm leading-6 text-stone-600">{{ $outlet->description }}</p>
+                    <div class="mt-6 space-y-3 border-t border-amber-100 pt-6 text-sm text-stone-700">
+                        <p><span class="font-semibold text-stone-900">Alamat:</span> {{ $outlet->address }}</p>
+                        <p><span class="font-semibold text-stone-900">Jam Buka:</span> {{ $outlet->opening_hours }}</p>
+                        @if($outlet->slug === 'bekasi')
+                            <p class="font-semibold text-amber-800">Lokasi maps sementara</p>
+                        @endif
+                    </div>
+                    <div class="mt-6"><a href="{{ route('outlet.show', $outlet->slug) }}" class="block rounded-2xl bg-stone-900 px-5 py-4 text-center font-semibold text-white transition hover:bg-stone-800">Lihat Detail & Menu Outlet</a></div>
                 </div>
-                <h2 class="text-2xl font-bold text-stone-900">{{ $outlet->name }}</h2>
-                <p class="mt-3 text-sm leading-6 text-stone-600">{{ $outlet->description }}</p>
-                <div class="mt-6 space-y-3 border-t border-amber-100 pt-6 text-sm text-stone-700">
-                    <p><span class="font-semibold text-stone-900">Alamat:</span> {{ $outlet->address }}</p>
-                    <p><span class="font-semibold text-stone-900">Jam Buka:</span> {{ $outlet->opening_hours }}</p>
-                    @if($outlet->slug === 'bekasi')
-                        <p class="font-semibold text-amber-800">Lokasi maps sementara</p>
-                    @endif
-                </div>
-                <div class="mt-6"><a href="{{ route('outlet.show', $outlet->slug) }}" class="block rounded-2xl bg-stone-900 px-5 py-4 text-center font-semibold text-white transition hover:bg-stone-800">Lihat Detail & Menu Outlet</a></div>
             </div>
         @endforeach
     </div>

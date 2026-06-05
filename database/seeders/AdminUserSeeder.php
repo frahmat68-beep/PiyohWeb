@@ -16,6 +16,7 @@ class AdminUserSeeder extends Seeder
 
         $superAdminRole = Role::firstOrCreate(['name' => 'super_admin']);
         $adminRole = Role::firstOrCreate(['name' => 'admin']);
+        $cashierRole = Role::firstOrCreate(['name' => 'cashier']);
 
         $superAdmin = User::firstOrNew(['email' => 'admin@piyohkopi.com']);
         $superAdmin->name = 'Super Admin Piyoh';
@@ -28,6 +29,6 @@ class AdminUserSeeder extends Seeder
         }
 
         $superAdmin->save();
-        $superAdmin->syncRoles([$superAdminRole->name, $adminRole->name]);
+        $superAdmin->syncRoles([$superAdminRole->name, $adminRole->name, $cashierRole->name]);
     }
 }

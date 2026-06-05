@@ -7,7 +7,7 @@ use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreBulkAction;
-use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -16,50 +16,23 @@ class MenuItemsTable
 {
     public static function configure(Table $table): Table
     {
-        return $table
-            ->columns([
-                TextColumn::make('menu_category_id')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('name')
-                    ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('base_price')
-                    ->money()
-                    ->sortable(),
-                IconColumn::make('is_active')
-                    ->boolean(),
-                IconColumn::make('is_featured')
-                    ->boolean(),
-                TextColumn::make('sort_order')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                TrashedFilter::make(),
-            ])
-            ->recordActions([
-                EditAction::make(),
-            ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
-                    ForceDeleteBulkAction::make(),
-                    RestoreBulkAction::make(),
-                ]),
-            ]);
+        return $table->columns([
+            SpatieMediaLibraryImageColumn::make('image')->collection('image')->label('Foto'),
+            TextColumn::make('name')->searchable()->sortable(),
+            TextColumn::make('category.name')->label('Kategori')->sortable(),
+            TextColumn::make('base_price')->money('IDR')->sortable(),
+            TextColumn::make('is_featured')->badge()->label('Featured'),
+            TextColumn::make('created_at')->dateTime()->sortable(),
+        ])->filters([
+            TrashedFilter::make(),
+        ])->recordActions([
+            EditAction::make(),
+        ])->toolbarActions([
+            BulkActionGroup::make([
+                DeleteBulkAction::make(),
+                ForceDeleteBulkAction::make(),
+                RestoreBulkAction::make(),
+            ]),
+        ]);
     }
 }
