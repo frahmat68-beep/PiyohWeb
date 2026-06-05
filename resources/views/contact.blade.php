@@ -66,7 +66,7 @@
                     </div>
                     <div>
                         <button type="submit" class="bg-amber-800 hover:bg-amber-900 text-white font-bold px-8 py-4 rounded-xl text-sm transition duration-300">
-                            Kirim Pesan Sekarang
+                            Kirim Pesan
                         </button>
                     </div>
                 </form>

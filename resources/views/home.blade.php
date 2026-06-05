@@ -1,90 +1,29 @@
 @extends('layouts.app')
-
-@section('title', $page->meta_title ?? 'Piyoh Kopi - Cita Rasa Kopi Nusantara Terkini')
-@section('meta_description', $page->meta_description ?? 'Selamat datang di Piyoh Kopi.')
-
+@section('title', $page->meta_title ?? 'Piyoh Kopi - Coffee, Slowbar, Pastry')
+@section('meta_description', $page->meta_description ?? 'Coffee shop hangat untuk kopi, slowbar, pastry, dan suasana nyaman nongkrong atau nugas.')
 @section('content')
-<div class="relative bg-amber-950 text-white overflow-hidden py-32">
-    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image: url('https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=1200');"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-amber-950 via-amber-900/90 to-transparent"></div>
-    
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-        <span class="inline-block bg-amber-800 text-amber-100 text-xs font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full mb-6 border border-amber-600/30">
-            Welcome to Piyoh Kopi
-        </span>
-        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight max-w-3xl leading-tight mb-6">
-            {{ $sections['hero_title'] ?? 'Setiap Tegukan Punya Cerita' }}
-        </h1>
-        <p class="text-lg sm:text-xl text-amber-100/90 max-w-2xl leading-relaxed mb-10">
-            {{ $sections['hero_subtitle'] ?? 'Piyoh Kopi menyajikan kopi pilihan berkualitas tinggi langsung ke meja Anda.' }}
-        </p>
-        <div class="flex flex-wrap gap-4">
-            <a href="{{ route('menu') }}" class="bg-amber-600 hover:bg-amber-500 text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-amber-600/20 transition duration-300">
-                Lihat Menu Kami
-            </a>
-            <a href="{{ route('outlet.index') }}" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-bold backdrop-blur-sm transition duration-300">
-                Cari Outlet Terdekat
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Brief Intro Section -->
-<div class="py-24 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <span class="text-amber-800 font-bold text-sm tracking-wider uppercase block mb-3">Tentang Kami</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight mb-6">
-                    Mengenal Lebih Dekat Racikan Khas Piyoh Kopi
-                </h2>
-                <p class="text-stone-600 leading-relaxed mb-8">
-                    {{ $sections['about_preview'] ?? 'Berdiri sejak tahun 2020, Piyoh Kopi berkomitmen memperkenalkan kopi racikan modern dengan sentuhan tradisional lokal.' }}
-                </p>
-                <a href="{{ route('about') }}" class="text-amber-800 font-bold hover:text-amber-900 inline-flex items-center gap-2 group">
-                    <span>Baca Selengkapnya</span>
-                    <span class="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </a>
+<div class="relative overflow-hidden bg-[#1c120b] text-white">
+    <div class="absolute inset-0 bg-cover bg-center opacity-30" style="background-image:url('https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=1400');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#1c120b] via-[#1c120b]/80 to-transparent"></div>
+    <div class="relative mx-auto grid max-w-7xl gap-12 px-4 py-24 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-32">
+        <div>
+            <span class="inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em]">Coffee • Slowbar • Pastry</span>
+            <h1 class="mt-6 max-w-2xl text-5xl font-extrabold leading-tight tracking-tight sm:text-6xl" style="font-family:'Outfit',sans-serif;">{{ $sections['hero_title'] ?? 'Ruang Hangat untuk Kopi dan Santai' }}</h1>
+            <p class="mt-6 max-w-xl text-base leading-7 text-amber-100/90 sm:text-lg">{{ $sections['hero_subtitle'] ?? 'Nikmati kopi, pastry, dan suasana nyaman di outlet Piyoh Kopi.' }}</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+                <a href="{{ route('menu') }}" class="rounded-full bg-amber-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-600">Lihat Menu</a>
+                <a href="{{ route('outlet.index') }}" class="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/15">Lihat Outlet</a>
             </div>
-            <div class="grid grid-cols-2 gap-4">
-                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600" alt="Coffee preparation" class="rounded-2xl shadow-md transform translate-y-6">
-                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600" alt="Coffee shop atmosphere" class="rounded-2xl shadow-md">
-            </div>
+            <p class="mt-4 text-sm text-amber-100/80">Untuk dine-in, scan QR di meja outlet.</p>
+        </div>
+        <div class="grid gap-4 self-end rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-5"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Lokasi utama</p><p class="mt-2 text-lg font-semibold">Galaxy Bekasi</p></div>
+            <div class="rounded-2xl bg-white/10 p-5"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Jam buka</p><p class="mt-2 text-lg font-semibold">08:00 - 23:30</p></div>
+            <div class="rounded-2xl bg-white/10 p-5 sm:col-span-2"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Aksi cepat</p><div class="mt-3 flex flex-wrap gap-3"><a href="{{ route('menu') }}" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-stone-900">Lihat Menu</a><a href="{{ route('outlet.show', 'galaxy') }}" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white">Buka Maps</a></div></div>
         </div>
     </div>
 </div>
-
-<!-- Outlets Highlight -->
-<div class="py-24 bg-amber-50/20 border-y border-amber-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <span class="text-amber-800 font-bold text-sm tracking-wider uppercase block mb-3">Cabang Outlet</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">Kunjungi Gerai Kami</h2>
-            <p class="text-stone-600 mt-4">
-                Temukan suasana ternyaman untuk bersantai, nugas, atau berdiskusi di cabang-cabang Piyoh Kopi terdekat.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            @foreach($outlets as $outlet)
-                <div class="bg-white rounded-2xl shadow-sm border border-amber-100 overflow-hidden hover:shadow-md transition-shadow">
-                    <div class="p-8">
-                        <span class="inline-block bg-amber-50 text-amber-800 text-xs font-semibold px-2.5 py-1 rounded-md mb-4">{{ $outlet->city }}</span>
-                        <h3 class="text-xl font-bold text-stone-900 mb-2">{{ $outlet->name }}</h3>
-                        <p class="text-stone-600 text-sm mb-6 line-clamp-2">{{ $outlet->description }}</p>
-                        
-                        <div class="text-xs text-stone-500 space-y-2 mb-6">
-                            <p><strong>Alamat:</strong> {{ $outlet->address }}</p>
-                            <p><strong>Jam Buka:</strong> {{ $outlet->opening_hours }}</p>
-                        </div>
-                        
-                        <a href="{{ route('outlet.show', $outlet->slug) }}" class="block text-center bg-stone-900 hover:bg-stone-800 text-white py-3 rounded-xl font-semibold text-sm transition-colors">
-                            Lihat Detail & Menu
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</div>
+<div class="bg-white py-20"><div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8"><div><h2 class="text-3xl font-extrabold text-stone-900" style="font-family:'Outfit',sans-serif;">Rasa, suasana, dan tempat yang pas untuk singgah.</h2><p class="mt-4 text-stone-600">{{ $sections['about_preview'] ?? 'Piyoh Kopi menghadirkan kopi yang hangat, suasana yang nyaman, dan menu yang mudah dijelajahi.' }}</p></div><div class="grid gap-4 sm:grid-cols-2"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600" class="rounded-3xl object-cover shadow-sm" alt="Coffee preparation"><img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=600" class="rounded-3xl object-cover shadow-sm" alt="Coffee shop ambience"></div></div></div>
+<div class="bg-[#f7f2ea] py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div class="mb-10 flex items-end justify-between gap-4"><div><p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-800">Featured Menu</p><h2 class="mt-2 text-3xl font-extrabold text-stone-900" style="font-family:'Outfit',sans-serif;">Menu favorit yang langsung terlihat jelas.</h2></div><a href="{{ route('menu') }}" class="text-sm font-semibold text-amber-800 hover:text-amber-900">Lihat semua</a></div><div class="grid gap-6 md:grid-cols-3">@foreach($featuredMenuItems as $item)<div class="rounded-3xl border border-amber-100 bg-white p-6 shadow-sm"><p class="text-xs uppercase tracking-[0.2em] text-amber-700">{{ $item->category->name ?? 'Menu' }}</p><h3 class="mt-3 text-xl font-bold text-stone-900">{{ $item->name }}</h3><p class="mt-2 text-sm text-stone-600">{{ $item->description }}</p><p class="mt-4 font-semibold text-stone-900">Rp {{ number_format($item->base_price, 0, ',', '.') }}</p></div>@endforeach</div></div></div>
+<div class="bg-white py-20"><div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><h2 class="text-3xl font-extrabold text-stone-900" style="font-family:'Outfit',sans-serif;">Outlet kami</h2><div class="mt-8 grid gap-6 md:grid-cols-2">@foreach($outlets as $outlet)<a href="{{ route('outlet.show', $outlet->slug) }}" class="rounded-3xl border border-amber-100 bg-amber-50/20 p-6 transition hover:shadow-md"><p class="text-xs uppercase tracking-[0.2em] text-amber-700">{{ $outlet->city }}</p><h3 class="mt-2 text-xl font-bold text-stone-900">{{ $outlet->name }}</h3><p class="mt-2 text-sm text-stone-600">{{ $outlet->description }}</p><p class="mt-4 text-sm font-medium text-amber-800">Buka detail outlet</p></a>@endforeach</div></div></div>
 @endsection

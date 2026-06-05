@@ -34,14 +34,14 @@
                             <p class="font-medium text-stone-900">{{ $outlet->opening_hours }}</p>
                         </div>
                         <div>
-                            <span class="block text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1">WhatsApp Order</span>
+                            <span class="block text-xs font-semibold uppercase tracking-wider text-stone-400 mb-1">WhatsApp Outlet</span>
                             <a href="https://wa.me/{{ $outlet->whatsapp }}" target="_blank" class="font-semibold text-amber-800 hover:underline flex items-center gap-1.5 mt-1">
                                 {{ $outlet->phone }} &rarr;
                             </a>
                         </div>
                         @if($outlet->google_maps_url)
                             <div class="pt-4">
-                                <a href="{{ $outlet->google_maps_url }}" target="_blank" class="w-full text-center block bg-stone-900 hover:bg-stone-850 text-white font-semibold py-3.5 rounded-xl transition duration-300">
+                                <a href="{{ $outlet->google_maps_url }}" target="_blank" rel="noopener noreferrer" class="w-full text-center block bg-stone-900 hover:bg-stone-850 text-white font-semibold py-3.5 rounded-xl transition duration-300">
                                     Petunjuk Arah Maps
                                 </a>
                             </div>

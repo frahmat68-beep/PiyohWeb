@@ -1,51 +1,36 @@
 @extends('layouts.app')
-
 @section('title', $page->meta_title ?? 'Daftar Menu Utama - Piyoh Kopi')
 @section('meta_description', $page->meta_description ?? 'Lihat menu racikan kopi terbaik kami.')
-
 @section('content')
-<div class="bg-amber-950 text-white py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1200');"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">{{ $sections['page_title'] ?? 'Eksplorasi Rasa Unik Kami' }}</h1>
-        <p class="mt-4 text-amber-200 max-w-2xl mx-auto text-base sm:text-lg">
-            {{ $sections['page_subtitle'] ?? 'Dari Signature Coffee hingga hidangan lezat peneman bersantai Anda.' }}
-        </p>
+<div class="bg-[#1c120b] text-white py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image:url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1200');"></div>
+    <div class="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl" style="font-family:'Outfit',sans-serif;">{{ $sections['page_title'] ?? 'Menu Piyoh Kopi' }}</h1>
+        <p class="mx-auto mt-4 max-w-2xl text-base text-amber-100/90 sm:text-lg">{{ $sections['page_subtitle'] ?? 'Website ini hanya menampilkan menu. Pemesanan dine-in dilakukan melalui QR yang tersedia di meja outlet.' }}</p>
     </div>
 </div>
-
-<div class="py-24 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        @forelse($menuCategories as $category)
-            @if($category->menuItems->count() > 0)
-                <div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 mb-8 pb-3 border-b border-amber-100 flex items-center gap-2">
-                        <span class="w-3 h-8 bg-amber-800 rounded-sm"></span>
-                        {{ $category->name }}
-                    </h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-white py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        @foreach($menuCategories as $category)
+            @if($category->menuItems->count())
+                <div class="mb-12">
+                    <h2 class="mb-6 text-2xl font-extrabold text-stone-900" style="font-family:'Outfit',sans-serif;">{{ $category->name }}</h2>
+                    <div class="grid gap-4 md:grid-cols-2">
                         @foreach($category->menuItems as $item)
-                            <div class="p-6 bg-amber-50/10 border border-amber-100/40 rounded-2xl flex justify-between gap-6">
-                                <div class="flex-grow">
-                                    <div class="flex justify-between items-start gap-4 mb-2">
-                                        <h3 class="font-bold text-stone-900 text-lg leading-tight">{{ $item->name }}</h3>
-                                        <span class="font-semibold text-amber-950 text-sm whitespace-nowrap bg-amber-50 border border-amber-100 px-3 py-1 rounded-full">
-                                            Rp {{ number_format($item->base_price, 0, ',', '.') }}
-                                        </span>
+                            <div class="rounded-2xl border border-amber-100 bg-amber-50/20 p-5">
+                                <div class="flex items-start justify-between gap-4">
+                                    <div>
+                                        <h3 class="font-bold text-stone-900">{{ $item->name }}</h3>
+                                        <p class="mt-2 text-sm text-stone-600">{{ $item->description }}</p>
                                     </div>
-                                    <p class="text-stone-500 text-sm leading-relaxed">{{ $item->description }}</p>
+                                    <span class="whitespace-nowrap rounded-full border border-amber-100 bg-white px-3 py-1 text-sm font-semibold text-stone-900">Rp {{ number_format($item->base_price, 0, ',', '.') }}</span>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
             @endif
-        @empty
-            <div class="text-center py-12">
-                <p class="text-stone-500 text-sm">Belum ada menu yang didaftarkan secara global.</p>
-            </div>
-        @endforelse
+        @endforeach
     </div>
 </div>
 @endsection
