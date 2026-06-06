@@ -10,7 +10,6 @@ use App\Models\MenuCategory;
 use App\Models\MenuItem;
 use App\Models\Outlet;
 use App\Models\Page;
-use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -28,6 +27,7 @@ class PublicController extends Controller
         $data['featuredMenuItems'] = MenuItem::with('category')->where('is_featured', true)->where('is_active', true)->take(4)->get();
         $data['outlets'] = Outlet::where('is_active', true)->orderBy('sort_order')->take(3)->get();
         $data['heroBanner'] = Banner::where('is_active', true)->where('location', 'home')->orderBy('sort_order')->first();
+        $data['primaryOutlet'] = Outlet::where('slug', 'galaxy')->where('is_active', true)->first();
         return view('home', $data);
     }
 
@@ -47,10 +47,9 @@ class PublicController extends Controller
     {
         $outlet = Outlet::where('slug', $slug)->where('is_active', true)->firstOrFail();
         $menuCategories = MenuCategory::with(['menuItems' => function ($q) use ($outlet) {
-            $q->where('is_active', true)
-              ->with(['outlets' => function ($q2) use ($outlet) {
-                  $q2->where('outlet_id', $outlet->id);
-              }]);
+            $q->where('is_active', true)->with(['outlets' => function ($q2) use ($outlet) {
+                $q2->where('outlet_id', $outlet->id);
+            }]);
         }])->where('is_active', true)->get();
 
         return view('outlet.show', compact('outlet', 'menuCategories'));

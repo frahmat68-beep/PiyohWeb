@@ -5,11 +5,17 @@ namespace App\Filament\Resources\Users\Pages;
 use App\Filament\Resources\Users\UserResource;
 use App\Models\User;
 use Filament\Resources\Pages\EditRecord;
-use Illuminate\Support\Facades\Hash;
 
 class EditUser extends EditRecord
 {
     protected static string $resource = UserResource::class;
+
+    protected function mutateFormDataBeforeFill(array $data): array
+    {
+        $data['role'] = $this->record->roles()->pluck('name')->first();
+
+        return $data;
+    }
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
@@ -18,8 +24,6 @@ class EditUser extends EditRecord
 
         if (blank($data['password'] ?? null)) {
             unset($data['password']);
-        } else {
-            $data['password'] = Hash::make($data['password']);
         }
 
         return $data;

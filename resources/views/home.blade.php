@@ -15,14 +15,18 @@
             <p class="mt-6 max-w-xl text-base leading-7 text-amber-100/90 sm:text-lg">{{ $sections['hero_subtitle'] ?? 'Nikmati kopi, pastry, dan suasana nyaman di outlet Piyoh Kopi.' }}</p>
             <div class="mt-8 flex flex-wrap gap-3">
                 <a href="{{ route('menu') }}" class="rounded-full bg-amber-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-amber-600">Lihat Menu</a>
-                <a href="{{ route('outlet.index') }}" class="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/15">Lihat Outlet</a>
+                @if($primaryOutlet && $primaryOutlet->google_maps_url)
+                    <a href="{{ $primaryOutlet->google_maps_url }}" target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/15">Buka Maps</a>
+                @else
+                    <a href="{{ route('outlet.show', 'galaxy') }}" class="rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/15">Detail Outlet</a>
+                @endif
             </div>
             <p class="mt-4 text-sm text-amber-100/80">Untuk dine-in, pemesanan dilakukan melalui QR yang tersedia di meja outlet.</p>
         </div>
         <div class="grid gap-4 self-end rounded-3xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm sm:grid-cols-2">
             <div class="rounded-2xl bg-white/10 p-5"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Lokasi utama</p><p class="mt-2 text-lg font-semibold">Galaxy Bekasi</p></div>
             <div class="rounded-2xl bg-white/10 p-5"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Jam buka</p><p class="mt-2 text-lg font-semibold">08:00 - 23:30</p></div>
-            <div class="rounded-2xl bg-white/10 p-5 sm:col-span-2"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Aksi cepat</p><div class="mt-3 flex flex-wrap gap-3"><a href="{{ route('menu') }}" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-stone-900">Lihat Menu</a><a href="{{ route('outlet.show', 'galaxy') }}" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white">Buka Maps</a></div></div>
+            <div class="rounded-2xl bg-white/10 p-5 sm:col-span-2"><p class="text-xs uppercase tracking-[0.2em] text-amber-100/70">Aksi cepat</p><div class="mt-3 flex flex-wrap gap-3"><a href="{{ route('menu') }}" class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-stone-900">Lihat Menu</a><a href="{{ route('outlet.index') }}" class="rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-white">Lihat Outlet</a></div></div>
         </div>
     </div>
 </div>
