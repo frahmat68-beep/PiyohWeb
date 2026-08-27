@@ -23,14 +23,11 @@ Audit dilakukan terhadap seluruh seeder di `database/seeders/` serta kesesuaian 
 Daftar berikut wajib diputuskan bersama pemilik (*owner*) Piyoh Kopi sebelum website diluncurkan ke publik:
 
 ### A. Status & Detail Cabang (Outlets)
-- [ ] **Status Outlet Bekasi (`is_active`)**:
-  - Apakah outlet kedua di Bekasi sudah siap ditampilkan ke publik?
-  - *Rekomendasi:* Jika outlet Bekasi belum grand opening atau belum memiliki alamat definitif, set `is_active = false` agar tidak membingungkan pelanggan.
-- [ ] **Data Lengkap Outlet Bekasi (Jika Diaktifkan)**:
-  - Alamat fisik lengkap (bukan *"Mengikuti titik lokasi pada Google Maps sementara"*).
-  - Jam operasional resmi (bukan *"Menunggu konfirmasi"*).
-  - Nomor telepon / WhatsApp resmi cabang.
-  - Link Google Maps definitif.
+- [ ] **Outlet Kedua (Piyoh Jaktim / Ryu Padel)**:
+  - **Lokasi & Venue:** Apakah benar lokasinya di dalam venue olahraga Ryu Padel (Jl. Kincan Raya No. 22, RT.1/RW.12, Pondok Kelapa, Duren Sawit, Jakarta Timur)?
+  - **Menu & Pricing:** Apakah menu dan harga sama dengan Galaxy atau berbeda karena berbagi tempat (*shared venue*) dengan bisnis lain?
+  - **Kontak Cabang:** Apakah nomor kontak sama dengan hotline Galaxy (`0812-3999-9731`) atau ada nomor khusus cabang Jaktim?
+  - **Status Publikasi (`is_active`):** Tetap `false` sampai owner mengonfirmasi kesiapan rilis resmi ke publik.
 - [ ] **Link Maps Outlet Galaxy**:
   - Saat ini kolom `google_maps_url` berisi link navigasi Waze (`https://www.waze.com/id/live-map/directions/...`).
   - *Konfirmasi:* Apakah ingin tetap menggunakan Waze atau diganti Google Maps resmi (`https://maps.google.com/...`)?

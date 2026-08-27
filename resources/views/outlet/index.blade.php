@@ -40,9 +40,6 @@
                     <div class="mt-6 space-y-2.5 border-t border-[#F3ECE1] pt-6 text-sm text-[#575E50]">
                         <p class="flex items-start gap-2"><span class="font-bold text-[#22261E] min-w-[70px]">Alamat:</span> <span>{{ $outlet->address }}</span></p>
                         <p class="flex items-start gap-2"><span class="font-bold text-[#22261E] min-w-[70px]">Jam Buka:</span> <span>{{ $outlet->opening_hours }}</span></p>
-                        @if($outlet->slug === 'bekasi')
-                            <p class="text-xs font-semibold text-[#C4823F] italic">Lokasi maps sementara</p>
-                        @endif
                     </div>
                     <div class="mt-8">
                         <a href="{{ route('outlet.show', $outlet->slug) }}" class="block rounded-full bg-[#475638] hover:bg-[#36422A] px-6 py-3.5 text-center font-bold text-sm text-white transition shadow-sm">

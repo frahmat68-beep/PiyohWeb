@@ -36,7 +36,7 @@ class PageSeeder extends Seeder
                 'title' => 'Outlets',
                 'slug' => 'outlet',
                 'meta_title' => 'Lokasi Outlet Piyoh Kopi',
-                'meta_description' => 'Temukan outlet Piyoh Kopi terdekat di Bekasi. Cek jam operasional dan petunjuk arah di sini.',
+                'meta_description' => 'Temukan outlet Piyoh Kopi terdekat. Cek jam operasional dan petunjuk arah di sini.',
                 'sections' => [
                     ['key' => 'page_title', 'type' => 'text', 'value' => 'Kunjungi Outlet Kami', 'sort_order' => 1],
                     ['key' => 'page_subtitle', 'type' => 'text', 'value' => 'Nikmati kopi hangat dan suasana yang asyik bersama teman atau keluarga di outlet kami yang nyaman.', 'sort_order' => 2],

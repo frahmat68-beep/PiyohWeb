@@ -32,9 +32,6 @@
                     @if($outlet->whatsapp)
                         <p class="flex items-start gap-2"><span class="font-bold text-[#22261E] min-w-[80px]">WhatsApp:</span> <a class="text-[#475638] font-semibold hover:underline" href="https://wa.me/{{ $outlet->whatsapp }}" target="_blank" rel="noopener noreferrer">Hubungi WhatsApp Cabang</a></p>
                     @endif
-                    @if($outlet->slug === 'bekasi')
-                        <p class="text-xs font-semibold text-[#C4823F] italic">Lokasi maps sementara</p>
-                    @endif
                 </div>
             </div>
             <div class="rounded-3xl border border-[#EBE4D8] bg-white p-8 shadow-sm flex flex-col justify-between">

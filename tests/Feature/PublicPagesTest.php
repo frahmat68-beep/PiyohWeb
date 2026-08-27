@@ -36,7 +36,8 @@ class PublicPagesTest extends TestCase
         $response = $this->get('/outlet');
         $response->assertStatus(200);
         $response->assertSee('Piyoh Kopi Galaxy');
-        // Outlet Bekasi is inactive (is_active = false), should not be visible
+        // Outlet Jaktim is inactive (is_active = false), should not be visible
+        $response->assertDontSee('Piyoh Jaktim');
         $response->assertDontSee('Piyoh Kopi Bekasi');
     }
 
@@ -47,7 +48,11 @@ class PublicPagesTest extends TestCase
         $responseGalaxy->assertStatus(200);
         $responseGalaxy->assertSee('Piyoh Kopi Galaxy');
 
-        // Bekasi is inactive
+        // Jaktim is inactive
+        $responseJaktim = $this->get('/outlet/jaktim');
+        $responseJaktim->assertStatus(404);
+
+        // Old bekasi route is also 404
         $responseBekasi = $this->get('/outlet/bekasi');
         $responseBekasi->assertStatus(404);
     }
