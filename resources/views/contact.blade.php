@@ -1,79 +1,97 @@
 @extends('layouts.app')
 
 @section('title', $page->meta_title ?? 'Hubungi Kami - Piyoh Kopi')
-@section('meta_description', $page->meta_description ?? 'Hubungi kami melalui form kontak Piyoh Kopi.')
+@section('meta_description', $page->meta_description ?? 'Hubungi kami melalui form kontak atau hotline resmi Piyoh Kopi.')
 
 @section('content')
-<div class="bg-amber-950 text-white py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c29a9a?q=80&w=1200');"></div>
+{{-- Hero Header --}}
+<div class="relative overflow-hidden bg-[#161A14] text-white py-20 lg:py-28">
+    <div class="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c29a9a?q=80&w=1200');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#161A14] via-[#161A14]/80 to-transparent"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">{{ $sections['page_title'] ?? 'Hubungi Kami' }}</h1>
-        <p class="mt-4 text-amber-200 max-w-2xl mx-auto text-base sm:text-lg">
-            {{ $sections['page_subtitle'] ?? 'Punya pertanyaan atau masukan? Silakan isi form di bawah.' }}
+        <span class="inline-flex items-center gap-2 rounded-full border border-[#475638]/60 bg-[#475638]/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4823F]">
+            Layanan Pelanggan
+        </span>
+        <h1 class="mt-4 text-4xl sm:text-5xl font-bold tracking-tight font-serif text-[#FAF7F2]">{{ $sections['page_title'] ?? 'Hubungi Kami' }}</h1>
+        <p class="mt-4 text-[#B2BBAE] max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+            {{ $sections['page_subtitle'] ?? 'Punya pertanyaan seputar menu, kerjasama, atau masukan untuk outlet kami? Silakan isi form di bawah.' }}
         </p>
     </div>
 </div>
 
-<div class="py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-20 lg:py-28 bg-[#FAF7F2]">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         @if(session('success'))
-            <div class="mb-8 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-2xl text-sm font-medium">
-                {{ session('success') }}
+            <div class="mb-8 p-5 bg-[#F0FDF4] border border-[#BBF7D0] text-[#15803D] rounded-2xl text-sm font-semibold flex items-center gap-3 shadow-sm">
+                <svg class="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>{{ session('success') }}</span>
             </div>
         @endif
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             
             <!-- Contact Info Sidebar -->
-            <div class="md:col-span-1 space-y-8">
-                <div>
-                    <h3 class="text-lg font-bold text-stone-900 mb-4">Informasi Kontak</h3>
+            <div class="md:col-span-1 space-y-6">
+                <div class="rounded-3xl border border-[#EBE4D8] bg-white p-7 shadow-sm space-y-6">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2.5 h-6 bg-[#475638] rounded-full"></span>
+                        <h3 class="text-lg font-bold text-[#22261E] font-serif">Kontak Resmi</h3>
+                    </div>
                     @php
                         $contactEmail = \App\Models\Setting::where('key', 'contact_email')->value('value') ?? 'info@piyohkopi.com';
                         $contactPhone = \App\Models\Setting::where('key', 'whatsapp')->value('value') ?? \App\Models\Setting::where('key', 'contact_phone')->value('value') ?? '0812-3999-9731';
                     @endphp
-                    <div class="space-y-4 text-sm text-stone-600">
-                        <p><strong>Email Brand:</strong><br><a href="mailto:{{ $contactEmail }}" class="hover:text-amber-800">{{ $contactEmail }}</a></p>
-                        <p><strong>Hotline WA:</strong><br><a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $contactPhone) }}" target="_blank" rel="noopener noreferrer" class="hover:text-amber-800">{{ $contactPhone }}</a></p>
+                    <div class="space-y-4 text-sm text-[#575E50]">
+                        <div>
+                            <span class="block text-xs font-bold uppercase tracking-wider text-[#889180] mb-1">Email Resmi</span>
+                            <a href="mailto:{{ $contactEmail }}" class="text-[#475638] font-medium hover:underline">{{ $contactEmail }}</a>
+                        </div>
+                        <div class="pt-3 border-t border-[#F3ECE1]">
+                            <span class="block text-xs font-bold uppercase tracking-wider text-[#889180] mb-1">Hotline WhatsApp</span>
+                            <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $contactPhone) }}" target="_blank" rel="noopener noreferrer" class="text-[#475638] font-medium hover:underline">{{ $contactPhone }}</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Form -->
             <div class="md:col-span-2">
-                <form action="{{ route('contact.store') }}" method="POST" class="space-y-6">
-                    @csrf
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-500 mb-1">Nama Lengkap *</label>
-                            <input type="text" name="name" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-800">
+                <div class="rounded-3xl border border-[#EBE4D8] bg-white p-8 sm:p-10 shadow-sm">
+                    <h3 class="text-xl font-bold text-[#22261E] font-serif mb-6">Kirim Pesan</h3>
+                    <form action="{{ route('contact.store') }}" method="POST" class="space-y-5">
+                        @csrf
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-[#575E50] mb-1.5">Nama Lengkap *</label>
+                                <input type="text" name="name" required placeholder="Masukkan nama Anda" class="w-full bg-[#FAF7F2] border border-[#DDD4C5] rounded-xl px-4 py-3 text-sm text-[#22261E] focus:outline-none focus:border-[#475638] focus:ring-1 focus:ring-[#475638] transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-[#575E50] mb-1.5">Alamat Email *</label>
+                                <input type="email" name="email" required placeholder="nama@email.com" class="w-full bg-[#FAF7F2] border border-[#DDD4C5] rounded-xl px-4 py-3 text-sm text-[#22261E] focus:outline-none focus:border-[#475638] focus:ring-1 focus:ring-[#475638] transition">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-[#575E50] mb-1.5">Nomor WhatsApp</label>
+                                <input type="text" name="phone" placeholder="Contoh: 08123456789" class="w-full bg-[#FAF7F2] border border-[#DDD4C5] rounded-xl px-4 py-3 text-sm text-[#22261E] focus:outline-none focus:border-[#475638] focus:ring-1 focus:ring-[#475638] transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-[#575E50] mb-1.5">Subjek</label>
+                                <input type="text" name="subject" placeholder="Perihal pesan" class="w-full bg-[#FAF7F2] border border-[#DDD4C5] rounded-xl px-4 py-3 text-sm text-[#22261E] focus:outline-none focus:border-[#475638] focus:ring-1 focus:ring-[#475638] transition">
+                            </div>
                         </div>
                         <div>
-                            <label class="block text-xs font-semibold text-stone-500 mb-1">Alamat Email *</label>
-                            <input type="email" name="email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-800">
+                            <label class="block text-xs font-bold uppercase tracking-wider text-[#575E50] mb-1.5">Pesan Anda *</label>
+                            <textarea name="message" rows="5" required placeholder="Tuliskan pesan atau pertanyaan Anda..." class="w-full bg-[#FAF7F2] border border-[#DDD4C5] rounded-xl px-4 py-3 text-sm text-[#22261E] focus:outline-none focus:border-[#475638] focus:ring-1 focus:ring-[#475638] transition"></textarea>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-500 mb-1">Nomor Telepon</label>
-                            <input type="text" name="phone" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-800">
+                        <div class="pt-2">
+                            <button type="submit" class="rounded-full bg-[#475638] hover:bg-[#36422A] text-white font-bold px-8 py-3.5 text-sm transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                                Kirim Pesan Sekarang
+                            </button>
                         </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-stone-500 mb-1">Subjek Pesan</label>
-                            <input type="text" name="subject" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-800">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-stone-500 mb-1">Isi Pesan Anda *</label>
-                        <textarea name="message" rows="5" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-amber-800"></textarea>
-                    </div>
-                    <div>
-                        <button type="submit" class="bg-amber-800 hover:bg-amber-900 text-white font-bold px-8 py-4 rounded-xl text-sm transition duration-300">
-                            Kirim Pesan
-                        </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
             
         </div>
