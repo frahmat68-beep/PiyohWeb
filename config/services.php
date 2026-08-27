@@ -35,4 +35,10 @@ return [
         ],
     ],
 
+    'piyoh_pos' => [
+        'url' => env('PIYOH_POS_URL', 'http://127.0.0.1:8080'),
+        'sync_token' => env('MASTER_DATA_SYNC_TOKEN'),
+        'webhook_secret' => env('WEBHOOK_HMAC_SECRET'),
+    ],
+
 ];
