@@ -1,48 +1,53 @@
 @extends('layouts.app')
 
 @section('title', $page->meta_title ?? 'Tentang Kami - Piyoh Kopi')
-@section('meta_description', $page->meta_description ?? 'Mengenal sejarah dan komitmen Piyoh Kopi.')
+@section('meta_description', $page->meta_description ?? 'Mengenal filosofi, sejarah, dan dedikasi seduh Piyoh Kopi.')
 
 @section('content')
-<div class="bg-amber-950 text-white py-20 relative overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20" style="background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200');"></div>
+{{-- Hero Header --}}
+<div class="relative overflow-hidden bg-[#161A14] text-white py-20 lg:py-28">
+    <div class="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1200');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#161A14] via-[#161A14]/80 to-transparent"></div>
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Tentang Piyoh Kopi</h1>
-        <p class="mt-4 text-amber-200 max-w-2xl mx-auto text-base sm:text-lg">
-            Menyajikan kualitas rasa kopi nusantara terbaik dengan dedikasi tinggi.
+        <span class="inline-flex items-center gap-2 rounded-full border border-[#475638]/60 bg-[#475638]/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4823F]">
+            Filosofi & Nilai
+        </span>
+        <h1 class="mt-4 text-4xl sm:text-5xl font-bold tracking-tight font-serif text-[#FAF7F2]">Tentang Piyoh Kopi</h1>
+        <p class="mt-4 text-[#B2BBAE] max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+            Menyajikan kualitas rasa kopi nusantara terbaik dengan dedikasi tinggi, menghadirkan ruang hangat untuk setiap momen kebersamaan.
         </p>
     </div>
 </div>
 
-<div class="py-24 bg-white">
+{{-- Story & Values --}}
+<div class="py-20 lg:py-28 bg-[#FAF7F2]">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- History -->
-        <div class="mb-16">
-            <h2 class="text-3xl font-extrabold text-stone-900 mb-6">Sejarah Kami</h2>
-            <div class="prose prose-amber text-stone-600 max-w-none leading-relaxed">
-                <p>{{ $sections['history'] ?? 'Piyoh Kopi bermula dari sebuah kedai kecil berbekal mimpi menyajikan kopi nusantara terbaik dengan harga yang bersahabat.' }}</p>
+        <div class="mb-16 rounded-3xl border border-[#EBE4D8] bg-white p-8 sm:p-12 shadow-sm">
+            <span class="text-xs font-bold uppercase tracking-[0.2em] text-[#475638]">Perjalanan Kami</span>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-[#22261E] font-serif mb-6">Sejarah & Semangat Awal</h2>
+            <div class="text-[#575E50] leading-relaxed space-y-4 text-base">
+                <p>{{ $sections['history'] ?? 'Piyoh Kopi bermula dari sebuah kedai kecil berbekal mimpi menyajikan kopi nusantara terbaik dengan harga yang bersahabat dan suasana slowbar yang nyaman.' }}</p>
             </div>
         </div>
 
-        <hr class="border-amber-100 my-16">
-
         <!-- Vision & Mission -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-                <h3 class="text-2xl font-bold text-stone-950 mb-4 flex items-center gap-2">
-                    <span class="w-2.5 h-6 bg-amber-800 rounded-sm"></span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="rounded-3xl border border-[#EBE4D8] bg-white p-8 shadow-sm">
+                <h3 class="text-xl font-bold text-[#22261E] font-serif mb-4 flex items-center gap-2.5">
+                    <span class="w-2.5 h-6 bg-[#475638] rounded-full"></span>
                     Visi Kami
                 </h3>
-                <p class="text-stone-600 leading-relaxed">
+                <p class="text-[#575E50] leading-relaxed text-sm sm:text-base">
                     {{ $sections['vision'] ?? 'Menjadi jaringan gerai kopi pilihan utama masyarakat Indonesia yang mengedepankan kualitas, kemudahan, dan inovasi rasa.' }}
                 </p>
             </div>
-            <div>
-                <h3 class="text-2xl font-bold text-stone-950 mb-4 flex items-center gap-2">
-                    <span class="w-2.5 h-6 bg-amber-800 rounded-sm"></span>
+            <div class="rounded-3xl border border-[#EBE4D8] bg-white p-8 shadow-sm">
+                <h3 class="text-xl font-bold text-[#22261E] font-serif mb-4 flex items-center gap-2.5">
+                    <span class="w-2.5 h-6 bg-[#C4823F] rounded-full"></span>
                     Misi Kami
                 </h3>
-                <div class="text-stone-600 leading-relaxed whitespace-pre-line">{{ $sections['mission'] ?? "1. Menyajikan produk kopi berkualitas.\n2. Memberikan pelayanan ramah.\n3. Membangun ruang komunitas yang nyaman." }}</div>
+                <div class="text-[#575E50] leading-relaxed text-sm sm:text-base whitespace-pre-line">{{ $sections['mission'] ?? "1. Menyajikan produk kopi berkualitas tinggi.\n2. Memberikan pelayanan ramah dan tulus.\n3. Membangun ruang komunitas yang hangat dan nyaman." }}</div>
             </div>
         </div>
     </div>
