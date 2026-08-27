@@ -29,9 +29,13 @@
             <div class="md:col-span-1 space-y-8">
                 <div>
                     <h3 class="text-lg font-bold text-stone-900 mb-4">Informasi Kontak</h3>
+                    @php
+                        $contactEmail = \App\Models\Setting::where('key', 'contact_email')->value('value') ?? 'info@piyohkopi.com';
+                        $contactPhone = \App\Models\Setting::where('key', 'whatsapp')->value('value') ?? \App\Models\Setting::where('key', 'contact_phone')->value('value') ?? '0812-3999-9731';
+                    @endphp
                     <div class="space-y-4 text-sm text-stone-600">
-                        <p><strong>Email Brand:</strong><br>info@piyohkopi.com</p>
-                        <p><strong>Hotline WA:</strong><br>+62 812-3456-7890</p>
+                        <p><strong>Email Brand:</strong><br><a href="mailto:{{ $contactEmail }}" class="hover:text-amber-800">{{ $contactEmail }}</a></p>
+                        <p><strong>Hotline WA:</strong><br><a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $contactPhone) }}" target="_blank" rel="noopener noreferrer" class="hover:text-amber-800">{{ $contactPhone }}</a></p>
                     </div>
                 </div>
             </div>

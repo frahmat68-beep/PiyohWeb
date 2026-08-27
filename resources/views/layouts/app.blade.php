@@ -6,7 +6,7 @@
     @php
         $siteLogo = \App\Models\Setting::where('key', 'site_logo')->value('value');
         $siteName = \App\Models\Setting::where('key', 'site_name')->value('value') ?? 'Piyoh Kopi';
-        $whatsappSetting = \App\Models\Setting::where('key', 'whatsapp')->value('value');
+        $whatsappSetting = \App\Models\Setting::where('key', 'whatsapp')->value('value') ?? \App\Models\Setting::where('key', 'contact_phone')->value('value');
     @endphp
     <title>@yield('title', 'Piyoh Kopi - Coffee, Slowbar, Pastry')</title>
     <meta name="description" content="@yield('meta_description', 'Coffee shop hangat untuk kopi, slowbar, pastry, dan suasana nyaman nongkrong atau nugas.')">
@@ -66,8 +66,14 @@
         <div>
             <h3 class="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-stone-500">Outlet</h3>
             <div class="space-y-2 text-sm text-stone-600">
-                <p>Piyoh Kopi Galaxy</p>
-                <p>Piyoh Kopi Bekasi</p>
+                @php
+                    $footerOutlets = \App\Models\Outlet::where('is_active', true)->orderBy('sort_order')->get();
+                @endphp
+                @forelse($footerOutlets as $fOutlet)
+                    <a href="{{ route('outlet.show', $fOutlet->slug) }}" class="block hover:text-amber-800">{{ $fOutlet->name }}</a>
+                @empty
+                    <p>Piyoh Kopi Galaxy</p>
+                @endforelse
             </div>
         </div>
         <div>

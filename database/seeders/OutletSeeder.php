@@ -37,7 +37,7 @@ class OutletSeeder extends Seeder
             'instagram_url' => 'https://instagram.com/piyohkopi',
             'google_maps_url' => 'https://maps.app.goo.gl/qPUTjVxqTq7NeqiJ9',
             'opening_hours' => 'Menunggu konfirmasi',
-            'is_active' => true,
+            'is_active' => false,
             'sort_order' => 2,
         ]);
     }

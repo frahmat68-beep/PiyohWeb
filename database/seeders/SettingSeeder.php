@@ -46,6 +46,13 @@ class SettingSeeder extends Seeder
                 'label' => 'Telepon Kontak Utama',
             ],
             [
+                'key' => 'whatsapp',
+                'value' => '6281239999731',
+                'group' => 'contact',
+                'type' => 'text',
+                'label' => 'Nomor WhatsApp Hotline',
+            ],
+            [
                 'key' => 'instagram_url',
                 'value' => 'https://instagram.com/piyohkopi',
                 'group' => 'social',
