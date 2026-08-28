@@ -5,16 +5,13 @@
 
 @section('content')
 {{-- Hero Header --}}
-<div class="relative overflow-hidden bg-[#161A14] text-white py-20 lg:py-28">
-    <div class="absolute inset-0 bg-cover bg-center opacity-20 mix-blend-luminosity" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c29a9a?q=80&w=1200');"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-[#161A14] via-[#161A14]/80 to-transparent"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-[#475638]/60 bg-[#475638]/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4823F]">
-            Layanan Pelanggan
-        </span>
-        <h1 class="mt-4 text-4xl sm:text-5xl font-bold tracking-tight font-serif text-[#FAF7F2]">{{ $sections['page_title'] ?? 'Hubungi Kami' }}</h1>
-        <p class="mt-4 text-[#B2BBAE] max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-            {{ $sections['page_subtitle'] ?? 'Punya pertanyaan seputar menu, kerjasama, atau masukan untuk outlet kami? Silakan isi form di bawah.' }}
+<div class="relative overflow-hidden bg-[#161A14] text-white py-24 lg:py-32">
+    <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity scale-105" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c29a9a?q=80&w=1400');"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#161A14] via-[#161A14]/85 to-transparent"></div>
+    <div class="relative mx-auto max-w-7xl 2xl:max-w-[1600px] px-4 text-center sm:px-6 lg:px-10 2xl:px-16">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight font-serif text-[#FAF7F2]">{{ $sections['page_title'] ?? 'Hubungi Kami' }}</h1>
+        <p class="mt-5 text-[#B2BBAE] max-w-2xl mx-auto text-base sm:text-xl font-light leading-relaxed">
+            {{ $sections['page_subtitle'] ?? 'Punya pertanyaan seputar menu, kerjasama, atau masukan untuk outlet kami? Silakan hubungi tim kami.' }}
         </p>
     </div>
 </div>
