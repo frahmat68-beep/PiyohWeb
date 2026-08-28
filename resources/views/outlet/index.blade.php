@@ -22,7 +22,7 @@
 <section class="reveal-on-scroll bg-[#FAF7F2] py-20 lg:py-28">
     <div class="mx-auto grid max-w-7xl 2xl:max-w-[1600px] gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:px-10 2xl:px-16">
         @foreach($outlets as $outlet)
-            @php $photo = $outlet->getFirstMediaUrl('photo'); @endphp
+            @php $photo = $outlet->getImageUrl(); @endphp
             <div class="overflow-hidden rounded-3xl border border-[#EBE4D8] bg-white shadow-2xs transition-all duration-300 hover:shadow-lg hover:-translate-y-1 flex flex-col justify-between">
                 <div>
                     <div class="h-64 bg-[#EBE4D8]/50 overflow-hidden relative">
@@ -34,9 +34,17 @@
                         <span class="absolute top-4 left-4 rounded-full bg-[#C4823F] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
                             {{ $outlet->city }}
                         </span>
-                        <span class="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-semibold shadow-sm {{ $outlet->is_active ? 'bg-emerald-700 text-white' : 'bg-stone-500 text-white' }}">
-                            {{ $outlet->is_active ? 'Buka' : 'Nonaktif' }}
-                        </span>
+                        @if($outlet->isOpenNow())
+                            <span class="absolute top-4 right-4 rounded-full px-3.5 py-1 text-xs font-bold shadow-sm bg-emerald-700 text-white flex items-center gap-1.5 backdrop-blur-xs">
+                                <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+                                Buka
+                            </span>
+                        @else
+                            <span class="absolute top-4 right-4 rounded-full px-3.5 py-1 text-xs font-bold shadow-sm bg-[#575E50] text-[#FAF7F2] flex items-center gap-1.5 backdrop-blur-xs">
+                                <span class="w-2 h-2 rounded-full bg-stone-300"></span>
+                                Tutup
+                            </span>
+                        @endif
                     </div>
                     <div class="p-8">
                         <h2 class="text-2xl sm:text-3xl font-bold text-[#22261E] font-serif">{{ $outlet->name }}</h2>

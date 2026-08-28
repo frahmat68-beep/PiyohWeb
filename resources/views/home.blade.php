@@ -44,19 +44,26 @@
                 <div class="flex items-start justify-between border-b border-white/10 pb-6">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-[#C4823F] font-semibold">Outlet Utama</p>
-                        <h2 class="mt-1.5 text-2xl sm:text-3xl font-bold text-[#FAF7F2] font-serif">Galaxy Bekasi</h2>
-                        <p class="mt-1 text-xs sm:text-sm text-[#889180]">Grand Galaxy City, RGA No. 7</p>
+                        <h2 class="mt-1.5 text-2xl sm:text-3xl font-bold text-[#FAF7F2] font-serif">{{ $primaryOutlet->name ?? 'Galaxy Bekasi' }}</h2>
+                        <p class="mt-1 text-xs sm:text-sm text-[#889180]">{{ $primaryOutlet ? Str::limit($primaryOutlet->address, 45) : 'Grand Galaxy City, RGA No. 7' }}</p>
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        Buka
-                    </span>
+                    @if($primaryOutlet && $primaryOutlet->isOpenNow())
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Buka
+                        </span>
+                    @else
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-stone-900/80 border border-stone-600/40 text-[#D5DBD0] text-xs font-medium">
+                            <span class="w-2 h-2 rounded-full bg-stone-400"></span>
+                            Tutup
+                        </span>
+                    @endif
                 </div>
 
                 <div class="flex items-center justify-between border-b border-white/10 pb-6">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-[#889180] font-medium">Jam Operasional</p>
-                        <p class="text-lg sm:text-xl font-bold text-[#FAF7F2] font-serif">08:00 — 23:30 WIB</p>
+                        <p class="text-lg sm:text-xl font-bold text-[#FAF7F2] font-serif">{{ $primaryOutlet->opening_hours ?? '08:00 — 23:30 WIB' }}</p>
                     </div>
                     <p class="text-xs text-[#889180]">Setiap Hari</p>
                 </div>
@@ -154,13 +161,27 @@
         </div>
         <div class="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
             @foreach($outlets as $outlet)
-                @php $photo = $outlet->getFirstMediaUrl('photo'); @endphp
+                @php $photo = $outlet->getImageUrl(); @endphp
                 <a href="{{ route('outlet.show', $outlet->slug) }}" class="group overflow-hidden rounded-3xl border border-[#EBE4D8] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
                     <div class="h-60 bg-[#EBE4D8]/50 overflow-hidden relative">
                         @if($photo)
                             <img src="{{ $photo }}" alt="{{ $outlet->name }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
                         @else
                             <div class="h-full w-full flex items-center justify-center text-[#889180] font-serif text-sm">Piyoh Kopi</div>
+                        @endif
+                        <span class="absolute top-4 left-4 rounded-full bg-[#C4823F] px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white shadow-sm">
+                            {{ $outlet->city }}
+                        </span>
+                        @if($outlet->isOpenNow())
+                            <span class="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold shadow-sm bg-emerald-700 text-white flex items-center gap-1.5 backdrop-blur-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+                                Buka
+                            </span>
+                        @else
+                            <span class="absolute top-4 right-4 rounded-full px-3 py-1 text-xs font-bold shadow-sm bg-[#575E50] text-[#FAF7F2] flex items-center gap-1.5 backdrop-blur-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-stone-300"></span>
+                                Tutup
+                            </span>
                         @endif
                     </div>
                     <div class="p-8">

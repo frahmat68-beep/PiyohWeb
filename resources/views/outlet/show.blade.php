@@ -2,13 +2,26 @@
 @section('title', $outlet->name . ' - Piyoh Kopi')
 @section('meta_description', $outlet->description)
 @section('content')
-@php $photo = $outlet->getFirstMediaUrl('photo'); @endphp
+@php $photo = $outlet->getImageUrl(); @endphp
 {{-- Hero Header --}}
 <div class="relative overflow-hidden bg-[#161A14] text-white py-20 lg:py-28">
-    <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity" style="background-image:url('{{ $photo ?: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200' }}');"></div>
+    <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity" style="background-image:url('{{ $photo }}');"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-[#161A14] via-[#161A14]/80 to-transparent"></div>
     <div class="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-        <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-[#475638]/60 bg-[#475638]/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4823F]">{{ $outlet->city }}</span>
+        <div class="mb-4 inline-flex items-center gap-2">
+            <span class="rounded-full border border-[#475638]/60 bg-[#475638]/20 px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#C4823F]">{{ $outlet->city }}</span>
+            @if($outlet->isOpenNow())
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-950/80 border border-emerald-500/40 px-3 py-1 text-xs font-semibold text-emerald-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Buka Sekarang
+                </span>
+            @else
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-stone-900/80 border border-stone-600/40 px-3 py-1 text-xs font-semibold text-[#D5DBD0]">
+                    <span class="w-1.5 h-1.5 rounded-full bg-stone-400"></span>
+                    Sedang Tutup
+                </span>
+            @endif
+        </div>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight font-serif text-[#FAF7F2]">{{ $outlet->name }}</h1>
         <p class="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-[#B2BBAE] leading-relaxed">{{ $outlet->description }}</p>
     </div>
@@ -19,9 +32,16 @@
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div class="grid gap-8 md:grid-cols-2">
             <div class="rounded-3xl border border-[#EBE4D8] bg-white p-8 shadow-sm">
-                <div class="flex items-center gap-2.5 mb-6">
-                    <span class="w-2.5 h-6 bg-[#475638] rounded-full"></span>
-                    <h2 class="text-xl font-bold text-[#22261E] font-serif">Informasi Outlet</h2>
+                <div class="flex items-center justify-between mb-6">
+                    <div class="flex items-center gap-2.5">
+                        <span class="w-2.5 h-6 bg-[#475638] rounded-full"></span>
+                        <h2 class="text-xl font-bold text-[#22261E] font-serif">Informasi Outlet</h2>
+                    </div>
+                    @if($outlet->isOpenNow())
+                        <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Buka</span>
+                    @else
+                        <span class="px-2.5 py-0.5 rounded-full bg-stone-200 text-[#575E50] text-xs font-bold">Tutup</span>
+                    @endif
                 </div>
                 <div class="space-y-4 text-sm text-[#575E50]">
                     <p class="flex items-start gap-2"><span class="font-bold text-[#22261E] min-w-[80px]">Alamat:</span> <span>{{ $outlet->address }}</span></p>
