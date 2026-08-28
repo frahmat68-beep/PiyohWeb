@@ -22,11 +22,11 @@
 </section>
 
 {{-- Sticky Quick Category Navigation Bar --}}
-<div class="sticky top-20 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EBE4D8] py-3.5 px-4 overflow-x-auto scrollbar-none">
-    <div class="mx-auto max-w-7xl 2xl:max-w-[1600px] flex items-center gap-2 sm:gap-3 justify-start sm:justify-center whitespace-nowrap">
+<div class="sticky top-[73px] z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#EBE4D8] py-2.5 px-4 overflow-x-auto scrollbar-none shadow-2xs">
+    <div class="mx-auto max-w-7xl 2xl:max-w-[1600px] flex items-center gap-2 sm:gap-3 overflow-x-auto scrollbar-none px-1">
         @foreach($menuCategories as $cat)
             @if($cat->menuItems->count())
-                <a href="#cat-{{ $cat->slug }}" class="touch-target-44 inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold bg-white border border-[#EBE4D8] text-[#575E50] hover:bg-[#475638] hover:text-white hover:border-[#475638] transition-all shadow-2xs">
+                <a href="#cat-{{ $cat->slug }}" class="shrink-0 whitespace-nowrap inline-flex items-center px-4 py-2 rounded-full text-xs font-semibold bg-white border border-[#EBE4D8] text-[#575E50] hover:bg-[#475638] hover:text-white hover:border-[#475638] transition-all shadow-2xs min-h-[44px]">
                     {{ $cat->name }}
                 </a>
             @endif
