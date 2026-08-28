@@ -30,10 +30,10 @@ class MenuItemForm
                 Textarea::make('description')
                     ->columnSpanFull(),
                 TextInput::make('base_price')
-                    ->required()
+                    ->nullable()
                     ->numeric()
-                    ->default(0)
-                    ->prefix('Rp'),
+                    ->prefix('Rp')
+                    ->helperText('Kosongkan jika harga berdasarkan permintaan / tanya barista'),
                 Toggle::make('is_active')
                     ->required()
                     ->default(true),

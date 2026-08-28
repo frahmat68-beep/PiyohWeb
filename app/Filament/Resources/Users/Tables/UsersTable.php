@@ -21,14 +21,12 @@ class UsersTable
             TextColumn::make('roles.name')->label('Roles')->badge(),
             TextColumn::make('created_at')->dateTime()->sortable(),
         ])->filters([
-            TrashedFilter::make(),
+            //
         ])->recordActions([
             EditAction::make(),
         ])->toolbarActions([
             BulkActionGroup::make([
                 DeleteBulkAction::make(),
-                ForceDeleteBulkAction::make(),
-                RestoreBulkAction::make(),
             ]),
         ]);
     }

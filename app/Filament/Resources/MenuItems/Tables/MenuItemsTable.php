@@ -20,7 +20,10 @@ class MenuItemsTable
             SpatieMediaLibraryImageColumn::make('image')->collection('image')->label('Foto'),
             TextColumn::make('name')->searchable()->sortable(),
             TextColumn::make('category.name')->label('Kategori')->sortable(),
-            TextColumn::make('base_price')->money('IDR')->sortable(),
+            TextColumn::make('base_price')
+                ->label('Harga Dasar')
+                ->formatStateUsing(fn ($state) => $state !== null && (float) $state > 0 ? 'Rp ' . number_format((float) $state, 0, ',', '.') : 'Tanya Barista')
+                ->sortable(),
             TextColumn::make('is_featured')->badge()->label('Featured'),
             TextColumn::make('created_at')->dateTime()->sortable(),
         ])->filters([
