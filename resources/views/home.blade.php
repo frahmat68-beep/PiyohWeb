@@ -88,11 +88,14 @@
         </div>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($featuredMenuItems as $item)
-                @php $image = $item->getFirstMediaUrl('image'); @endphp
+                @php 
+                    $image = $item->getImageUrl(); 
+                    $isPlaceholder = $item->isUsingPlaceholderImage();
+                @endphp
                 <div class="group overflow-hidden rounded-2xl border border-[#EBE4D8] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
                     <div class="h-48 bg-[#EBE4D8]/50 overflow-hidden relative">
                         @if($image)
-                            <img src="{{ $image }}" alt="{{ $item->name }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
+                            <img src="{{ $image }}" alt="{{ $item->name }}{{ $isPlaceholder ? ' - ' . \App\Models\MenuItem::PLACEHOLDER_NOTICE : '' }}" title="{{ $isPlaceholder ? \App\Models\MenuItem::PLACEHOLDER_NOTICE : $item->name }}" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105">
                         @else
                             <div class="h-full w-full flex items-center justify-center text-[#889180] font-serif text-sm">Piyoh Kopi</div>
                         @endif
@@ -105,7 +108,11 @@
                         <p class="mt-2 text-xs sm:text-sm text-[#575E50] line-clamp-2 leading-relaxed">{{ $item->description }}</p>
                         <div class="mt-4 pt-4 border-t border-[#F3ECE1] flex items-center justify-between">
                             <span class="text-xs text-[#889180]">Mulai dari</span>
-                            <span class="text-base font-bold text-[#475638]">Rp {{ number_format($item->base_price, 0, ',', '.') }}</span>
+                            @if($item->base_price !== null && $item->base_price > 0)
+                                <span class="text-base font-bold text-[#475638]">Rp {{ number_format($item->base_price, 0, ',', '.') }}</span>
+                            @else
+                                <span class="text-xs font-bold text-[#C4823F]">Tanya Barista</span>
+                            @endif
                         </div>
                     </div>
                 </div>

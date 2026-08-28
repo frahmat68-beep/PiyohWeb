@@ -31,12 +31,15 @@
                     </div>
                     <div class="grid gap-6 md:grid-cols-2">
                         @foreach($category->menuItems as $item)
-                            @php $image = $item->getFirstMediaUrl('image'); @endphp
+                            @php 
+                                $image = $item->getImageUrl(); 
+                                $isPlaceholder = $item->isUsingPlaceholderImage();
+                            @endphp
                             <div class="group overflow-hidden rounded-2xl border border-[#EBE4D8] bg-white shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5">
                                 <div class="grid grid-cols-1 sm:grid-cols-[160px_1fr]">
                                     <div class="min-h-40 bg-[#EBE4D8]/50 overflow-hidden relative">
                                         @if($image)
-                                            <img src="{{ $image }}" alt="{{ $item->name }}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
+                                            <img src="{{ $image }}" alt="{{ $item->name }}{{ $isPlaceholder ? ' - ' . \App\Models\MenuItem::PLACEHOLDER_NOTICE : '' }}" title="{{ $isPlaceholder ? \App\Models\MenuItem::PLACEHOLDER_NOTICE : $item->name }}" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105">
                                         @else
                                             <div class="h-full w-full flex items-center justify-center text-[#889180] font-serif text-sm">Piyoh Kopi</div>
                                         @endif
@@ -46,7 +49,11 @@
                                             <div class="flex items-start justify-between gap-3">
                                                 <h3 class="font-bold text-[#22261E] font-serif text-lg group-hover:text-[#475638] transition">{{ $item->name }}</h3>
                                                 <span class="whitespace-nowrap rounded-full bg-[#FAF7F2] border border-[#EBE4D8] px-3 py-1 text-xs font-bold text-[#475638]">
-                                                    Rp {{ number_format($item->base_price, 0, ',', '.') }}
+                                                    @if($item->base_price !== null && $item->base_price > 0)
+                                                        Rp {{ number_format($item->base_price, 0, ',', '.') }}
+                                                    @else
+                                                        Tanya Barista
+                                                    @endif
                                                 </span>
                                             </div>
                                             <p class="mt-2 text-xs sm:text-sm text-[#575E50] leading-relaxed">{{ $item->description }}</p>

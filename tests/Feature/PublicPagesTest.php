@@ -57,11 +57,18 @@ class PublicPagesTest extends TestCase
         $responseBekasi->assertStatus(404);
     }
 
-    public function test_menu_page_returns_successful_response(): void
+    public function test_menu_page_returns_successful_response_and_renders_categories(): void
     {
         $response = $this->get('/menu');
         $response->assertStatus(200);
         $response->assertSee('Kopi Susu Piyoh');
+        $response->assertSee('Hot Coffee');
+        $response->assertSee('Signature Drink');
+        $response->assertSee('Manual Brew');
+        $response->assertSee("Barista's Present");
+        $response->assertSee('Choco Series');
+        $response->assertSee('Import Beans');
+        $response->assertSee('Tanya Barista');
     }
 
     public function test_careers_page_returns_successful_response(): void

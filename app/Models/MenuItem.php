@@ -75,4 +75,27 @@ class MenuItem extends Model implements HasMedia
     {
         return 'slug';
     }
+
+    const PLACEHOLDER_NOTICE = 'Foto sementara - akan diganti foto asli produk';
+
+    /**
+     * Get image URL, fallback to category placeholder.
+     */
+    public function getImageUrl(): ?string
+    {
+        $media = $this->getFirstMediaUrl('image');
+        if (!empty($media)) {
+            return $media;
+        }
+
+        return $this->category?->getDefaultPlaceholderUrl();
+    }
+
+    /**
+     * Check if currently using placeholder image.
+     */
+    public function isUsingPlaceholderImage(): bool
+    {
+        return empty($this->getFirstMediaUrl('image')) && !empty($this->category?->getDefaultPlaceholderUrl());
+    }
 }
