@@ -45,7 +45,7 @@ class SyncMasterDataCommand extends Command
                 'category_id' => (string) $item->menu_category_id,
                 'description' => $item->description,
                 'base_price' => $item->base_price !== null ? (float) $item->base_price : 0,
-                'sku' => strtoupper(substr(str_replace('-', '', $item->slug), 0, 8)),
+                'sku' => 'PIYOH-' . str_pad($item->id, 4, '0', STR_PAD_LEFT),
                 'is_active' => (bool) $item->is_active,
             ];
         })->values()->toArray();
