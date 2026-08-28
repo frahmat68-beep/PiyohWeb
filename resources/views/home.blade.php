@@ -8,64 +8,64 @@
 
 {{-- Hero Section --}}
 <section class="relative overflow-hidden bg-[#161A14] text-white">
-    <div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity scale-105 transition-transform duration-1000" style="background-image:url('{{ $bannerImage ?: 'https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=1400' }}');"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-[#161A14] via-[#161A14]/85 to-[#161A14]/40"></div>
+    <div class="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity scale-105 transition-transform duration-1000" style="background-image:url('{{ $bannerImage ?: 'https://images.unsplash.com/photo-1507133750040-4a8f57021571?q=80&w=1600' }}');"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#161A14] via-[#161A14]/90 to-[#161A14]/50"></div>
     
-    <div class="relative mx-auto grid max-w-7xl 2xl:max-w-[1600px] gap-12 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:px-10 2xl:px-16 lg:py-32 items-center">
-        <div class="lg:col-span-7 space-y-6">
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight font-serif text-[#FAF7F2]">
+    <div class="relative mx-auto grid max-w-7xl 2xl:max-w-[1600px] gap-12 px-4 py-24 sm:px-6 lg:grid-cols-12 lg:px-10 2xl:px-16 lg:py-36 items-center">
+        <div class="lg:col-span-7 space-y-8">
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl 2xl:text-8xl font-bold leading-[1.05] tracking-tight font-serif text-[#FAF7F2]">
                 {{ $sections['hero_title'] ?? 'Ruang Hangat untuk Kopi dan Santai' }}
             </h1>
             <p class="max-w-xl text-base sm:text-lg lg:text-xl leading-relaxed text-[#B2BBAE] font-light">
-                {{ $sections['hero_subtitle'] ?? 'Nikmati racikan kopi istimewa, pastry artisanal, dan suasana santai yang menenangkan di outlet Piyoh Kopi.' }}
+                {{ $sections['hero_subtitle'] ?? 'Nikmati racikan kopi istimewa nusantara, slowbar artisanal, dan suasana santai yang menenangkan di outlet Piyoh Kopi.' }}
             </p>
             <div class="pt-2 flex flex-wrap items-center gap-4">
-                <a href="{{ route('menu') }}" class="touch-target-44 inline-flex items-center justify-center rounded-full bg-[#475638] hover:bg-[#36422A] px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <a href="{{ route('menu') }}" class="touch-target-44 inline-flex items-center justify-center rounded-full bg-[#475638] hover:bg-[#36422A] px-9 py-4 text-base font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
                     Lihat Menu
                 </a>
                 @if($primaryOutlet && $primaryOutlet->google_maps_url)
-                    <a href="{{ $primaryOutlet->google_maps_url }}" target="_blank" rel="noopener noreferrer" class="touch-target-44 inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-8 py-3.5 text-sm font-semibold text-[#FAF7F2] transition-all duration-200 backdrop-blur-sm">
-                        Buka Maps
+                    <a href="{{ $primaryOutlet->google_maps_url }}" target="_blank" rel="noopener noreferrer" class="touch-target-44 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 hover:bg-white/15 px-8 py-4 text-base font-semibold text-[#FAF7F2] transition-all duration-300 backdrop-blur-sm">
+                        Petunjuk Lokasi
                     </a>
                 @else
-                    <a href="{{ route('outlet.show', 'galaxy') }}" class="touch-target-44 inline-flex items-center justify-center rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-8 py-3.5 text-sm font-semibold text-[#FAF7F2] transition-all duration-200 backdrop-blur-sm">
+                    <a href="{{ route('outlet.show', 'galaxy') }}" class="touch-target-44 inline-flex items-center justify-center rounded-full border border-white/25 bg-white/5 hover:bg-white/15 px-8 py-4 text-base font-semibold text-[#FAF7F2] transition-all duration-300 backdrop-blur-sm">
                         Detail Outlet
                     </a>
                 @endif
             </div>
-            <p class="text-xs sm:text-sm text-[#889180] flex items-center gap-2 pt-2">
+            <p class="text-xs sm:text-sm text-[#889180] flex items-center gap-2 pt-1 font-light">
                 <svg class="w-4 h-4 text-[#C4823F] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span>Untuk dine-in, pemesanan dilakukan mandiri melalui QR code di meja outlet.</span>
+                <span>Dine-in dapat langsung memesan mandiri via scan QR di meja outlet.</span>
             </p>
         </div>
 
         <div class="lg:col-span-5">
-            <div class="rounded-3xl border border-white/10 bg-[#222920]/75 p-6 sm:p-8 backdrop-blur-md shadow-2xl space-y-6">
-                <div class="flex items-start justify-between border-b border-white/10 pb-5">
+            <div class="rounded-3xl border border-white/15 bg-[#222920]/80 p-7 sm:p-9 backdrop-blur-md shadow-2xl space-y-6">
+                <div class="flex items-start justify-between border-b border-white/10 pb-6">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-[#C4823F] font-semibold">Outlet Utama</p>
-                        <h2 class="mt-1 text-2xl font-bold text-[#FAF7F2] font-serif">Galaxy Bekasi</h2>
-                        <p class="mt-1 text-xs text-[#889180]">Grand Galaxy City, RGA No. 7</p>
+                        <h2 class="mt-1.5 text-2xl sm:text-3xl font-bold text-[#FAF7F2] font-serif">Galaxy Bekasi</h2>
+                        <p class="mt-1 text-xs sm:text-sm text-[#889180]">Grand Galaxy City, RGA No. 7</p>
                     </div>
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
+                    <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 text-xs font-medium">
                         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                         Buka
                     </span>
                 </div>
 
-                <div class="flex items-center justify-between border-b border-white/10 pb-5">
+                <div class="flex items-center justify-between border-b border-white/10 pb-6">
                     <div>
                         <p class="text-xs uppercase tracking-widest text-[#889180] font-medium">Jam Operasional</p>
-                        <p class="text-lg font-bold text-[#FAF7F2] font-serif">08:00 — 23:30 WIB</p>
+                        <p class="text-lg sm:text-xl font-bold text-[#FAF7F2] font-serif">08:00 — 23:30 WIB</p>
                     </div>
                     <p class="text-xs text-[#889180]">Setiap Hari</p>
                 </div>
 
-                <div class="pt-1 flex gap-3">
-                    <a href="{{ route('menu') }}" class="touch-target-44 flex-1 text-center rounded-full bg-[#FAF7F2] hover:bg-white px-5 py-3 text-xs font-bold text-[#22261E] transition">
+                <div class="pt-2 flex gap-3.5">
+                    <a href="{{ route('menu') }}" class="touch-target-44 flex-1 text-center rounded-full bg-[#FAF7F2] hover:bg-white px-5 py-3.5 text-xs sm:text-sm font-bold text-[#22261E] transition shadow-sm hover:shadow">
                         Buku Menu
                     </a>
-                    <a href="{{ route('outlet.index') }}" class="touch-target-44 flex-1 text-center rounded-full border border-white/20 bg-white/5 hover:bg-white/15 px-5 py-3 text-xs font-semibold text-[#FAF7F2] transition">
+                    <a href="{{ route('outlet.index') }}" class="touch-target-44 flex-1 text-center rounded-full border border-white/20 bg-white/5 hover:bg-white/15 px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#FAF7F2] transition">
                         Semua Outlet
                     </a>
                 </div>
