@@ -19,8 +19,10 @@ class OutletTest extends TestCase
 
         // Midnight / Early morning (e.g. 00:06 WIB -> Closed)
         $midnight = Carbon::create(2026, 8, 29, 0, 6, 0, 'Asia/Jakarta');
+        Carbon::setTestNow($midnight);
         $this->assertFalse($outlet->isOpenNow($midnight));
         $this->assertSame('Tutup', $outlet->status_label);
+        Carbon::setTestNow();
 
         // Morning before open (e.g. 07:45 WIB -> Closed)
         $early = Carbon::create(2026, 8, 29, 7, 45, 0, 'Asia/Jakarta');
