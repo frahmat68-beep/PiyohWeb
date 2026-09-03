@@ -68,7 +68,7 @@
                     <a href="{{ route('menu') }}" class="touch-target-44 flex-1 text-center rounded-full bg-[#FAF7F2] hover:bg-white px-5 py-3.5 text-xs sm:text-sm font-bold text-[#22261E] transition shadow-sm hover:shadow">
                         Buku Menu
                     </a>
-                    <a href="{{ route('outlet.index') }}" class="touch-target-44 flex-1 text-center rounded-full border border-white/20 bg-white/5 hover:bg-white/15 px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#FAF7F2] transition">
+                    <a href="{{ route('outlet.index') }}" class="touch-target-44 flex-1 text-center rounded-full border border-white/20 bg-white/5 hover:bg-white/15 px-6 py-3.5 min-h-[48px] flex items-center justify-center text-sm sm:text-base font-semibold text-[#FAF7F2] transition">
                         Semua Outlet
                     </a>
                 </div>
@@ -131,15 +131,15 @@
                         </div>
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-[#22261E] font-serif group-hover:text-[#475638] transition">{{ $item->name }}</h3>
-                            <p class="mt-2 text-xs sm:text-sm text-[#575E50] line-clamp-2 leading-relaxed">{{ $item->description }}</p>
+                            <p class="mt-2 text-sm sm:text-base text-[#575E50] line-clamp-2 leading-relaxed">{{ $item->description }}</p>
                         </div>
                     </div>
                     <div class="px-6 pb-6 pt-2 border-t border-[#F3ECE1] flex items-center justify-between">
-                        <span class="text-xs text-[#889180]">Harga</span>
+                        <span class="text-sm text-[#889180]">Harga</span>
                         @if($item->base_price !== null && $item->base_price > 0)
-                            <span class="text-base font-bold text-[#475638]">Rp {{ number_format($item->base_price, 0, ',', '.') }}</span>
+                            <span class="text-base sm:text-lg font-bold text-[#475638] font-serif">Rp {{ number_format($item->base_price, 0, ',', '.') }}</span>
                         @else
-                            <span class="text-xs font-bold text-[#C4823F]">Tanya Barista</span>
+                            <span class="text-sm font-bold text-[#C4823F]">Tanya Barista</span>
                         @endif
                     </div>
                 </div>
